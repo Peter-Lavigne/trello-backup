@@ -120,6 +120,10 @@ foreach ($boards as $id => $board) {
     if(!is_writable($path)) {
         die("You don't have permission to write to backup dir $path");
     }
+
+    if($backup_active_organization_boards && !empty($board->orgName)) {
+        continue;
+    }
     
     $filename = $dirname . '.json';
 
